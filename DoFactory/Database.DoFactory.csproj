@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
+    <AssemblyName>Database.DoFactory</AssemblyName>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Database.DoFactory.ModelConfiguration\Database.DoFactory.ModelConfiguration.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup Label="SDK Versions">    
+    <NetCoreTargetVersion>netcoreapp2.2</NetCoreTargetVersion>    
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Versions">
+    <MicrosoftEntityFrameworkCoreVersion>2.2.6</MicrosoftEntityFrameworkCoreVersion>
+    <MicrosoftEntityFrameworkSqlServerVersion>2.2.6</MicrosoftEntityFrameworkSqlServerVersion>
+    <MicrosoftEntityFrameworkCoreDesignVersion>2.2.6</MicrosoftEntityFrameworkCoreDesignVersion>
+  </PropertyGroup>
+  
+</Project>
