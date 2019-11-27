@@ -17,8 +17,8 @@ namespace Microsoft.Extensions.DependencyInjection
             var scopeServices = serviceProvider.CreateScope().ServiceProvider;
             var store = scopeServices.GetRequiredService<IMultiTenantStore>();
 
-            store.TryAddAsync(new TenantInfo("tenant-a-demo", "tenant-a", "Chaza Vea", "Data Source=.\\sqlexpress;Initial Catalog=DoFactory;Integrated Security=True;", null)).Wait();
-            store.TryAddAsync(new TenantInfo("tenant-b-demo", "tenant-b", "Hay Toy", "Data Source=.\\sqlexpress;Initial Catalog=DoFactoryNew;Integrated Security=True;", null)).Wait();
+            store.TryAddAsync(new TenantInfo("tenant-a-demo", "tenant-a", "Chaza Vea", "Data Source=.\\sqlexpress01;Initial Catalog=DoFactory;Integrated Security=True;", null)).Wait();
+            store.TryAddAsync(new TenantInfo("tenant-b-demo", "tenant-b", "Hay Toy", "Data Source=.\\sqlexpress01;Initial Catalog=DoFactoryNew;Integrated Security=True;", null)).Wait();
         }
     }
 }

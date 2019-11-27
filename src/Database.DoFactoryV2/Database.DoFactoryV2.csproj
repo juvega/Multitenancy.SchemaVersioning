@@ -9,5 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database.DoFactory.ModelConfiguration\Database.DoFactory.ModelConfiguration.csproj" />
+    <ProjectReference Include="..\DoFactory\Database.DoFactory.csproj" />
   </ItemGroup>
 </Project>

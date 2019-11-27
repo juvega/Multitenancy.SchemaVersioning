@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database.DoFactoryV2\Database.DoFactoryV2.csproj" />
-    <ProjectReference Include="..\DoFactory\Database.DoFactory.csproj" />
   </ItemGroup> 
 
 </Project>
