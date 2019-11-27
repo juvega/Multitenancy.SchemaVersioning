@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Database.DoFactoryV2
 {
-    public class DoFactoryNewContext : DoFactoryContext
+    public class DoFactoryV2Context : DoFactoryContext
     {
-        public DoFactoryNewContext(TenantInfo tenantInfo) : base(tenantInfo)
+        public DoFactoryV2Context(TenantInfo tenantInfo) : base(tenantInfo)
         {
         }
 

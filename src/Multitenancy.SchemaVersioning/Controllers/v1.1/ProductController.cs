@@ -4,17 +4,18 @@ using System.Linq;
 
 namespace Multitenancy.SchemaVersioning.Controllers.V2
 {
-    [Route("{__tenant__=}/api/v1.1/[controller]")]
+    [ApiVersion("1.1")]
+    [ApiController]
+    [Route("{__tenant__=}/api/v{version:apiVersion}/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly DoFactoryNewContext _context;
-        public ProductController(DoFactoryNewContext context)
+        private readonly DoFactoryV2Context _context;
+        public ProductController(DoFactoryV2Context context)
         {
             _context = context;
         }
 
-        [HttpGet]
-        [ApiVersion("1.1")]
+        [HttpGet]        
         public IActionResult GetProduct()
         {
             return Ok(_context.Product.ToList());

@@ -4,6 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoFactory\Database.DoFactory.csproj" />
+    <ProjectReference Include="..\Database.DoFactoryV2\Database.DoFactoryV2.csproj" />
   </ItemGroup>
 </Project>

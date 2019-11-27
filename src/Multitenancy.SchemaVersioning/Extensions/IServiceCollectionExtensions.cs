@@ -1,5 +1,6 @@
 ﻿using Database.DoFactory;
 using Database.DoFactoryV2;
+using Database.DoFactoryV3;
 using Microsoft.AspNetCore.Routing;
 using Multitenancy.SchemaVersioning;
 using System;
@@ -11,7 +12,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddEntityFrameworkConfiguraton(this IServiceCollection services)
         {
             services.AddDbContext<DoFactoryContext>();
-            services.AddDbContext<DoFactoryNewContext>();
+            services.AddDbContext<DoFactoryV2Context>();
+            services.AddDbContext<DoFactoryV3Context>();
 
             return services;
         }

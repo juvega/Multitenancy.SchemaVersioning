@@ -9,9 +9,7 @@ namespace Database.DoFactory.ModelConfiguration.V2
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.ConfigureBaseFields();
-
             builder.ConfigureVersion11();
-
         }
     }
 }
