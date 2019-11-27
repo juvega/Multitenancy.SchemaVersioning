@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Multitenancy.SchemaVersioning.Controllers.V2
 {
-    [Route("api/v1.1/[controller]")]
+    [Route("{__tenant__=}/api/v1.1/[controller]")]
     public class ProductController : ControllerBase
     {
         private readonly DoFactoryNewContext _context;

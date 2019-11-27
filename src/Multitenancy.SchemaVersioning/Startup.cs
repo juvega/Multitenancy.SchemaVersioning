@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 
 namespace Multitenancy.SchemaVersioning
 {
@@ -21,20 +15,19 @@ namespace Multitenancy.SchemaVersioning
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+                
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersioning();
-            services.AddEntityFrameworkConfiguraton(Configuration);            
+            services.AddEntityFrameworkConfiguraton();
 
-            services.AddMvcCore()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddMultitenantConfiguration(ConfigRoutes);
+
+            services.AddMvcCore()                
                 .AddJsonFormatters();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+                
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -45,9 +38,16 @@ namespace Multitenancy.SchemaVersioning
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseMultitenantSetup();
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseApiVersioning();
+            app.UseMvc(ConfigRoutes);
+        }
+
+        private void ConfigRoutes(IRouteBuilder routes)
+        {
+            routes.MapRoute("Defaut", "{__tenant__=}/api/{version:apiVersion}/{controller}/{action}");
         }
     }
 }

@@ -4,6 +4,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Finbuckle.MultiTenant" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Database.DoFactory.ModelConfiguration\Database.DoFactory.ModelConfiguration.csproj" />
   </ItemGroup>
 </Project>

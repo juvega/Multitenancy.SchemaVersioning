@@ -1,23 +1,29 @@
 ﻿using System;
 using Database.DoFactory.ModelConfiguration;
 using Database.DoFactory.Models;
+using Finbuckle.MultiTenant;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Database.DoFactoryV2
 {
-    public class DoFactoryNewContext : DbContext
+    public class DoFactoryNewContext : MultiTenantDbContext
     {
-        public DoFactoryNewContext(DbContextOptions<DoFactoryNewContext> options)
-            : base(options)
-        {
-        }
 
-        public DbSet<Customer> Customer { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<OrderItem> OrderItem { get; set; }
-        public DbSet<Product> Product { get; set; }
-        public DbSet<Supplier> Supplier { get; set; }
+        public DoFactoryNewContext(TenantInfo tenantInfo) : base(tenantInfo) { }
+        public DoFactoryNewContext(TenantInfo tenantInfo, DbContextOptions<DoFactoryNewContext> options) : base(tenantInfo, options) { }
+
+
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderItem> OrderItem { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Supplier> Supplier { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(ConnectionString);
+        }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

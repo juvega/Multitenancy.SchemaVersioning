@@ -1,4 +1,10 @@
-﻿if exists (select 1
+﻿Create database [dofactorynew]
+go
+
+use [dofactorynew]
+go
+
+if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('"Order"') and o.name = 'FK_ORDER_REFERENCE_CUSTOMER')
 alter table "Order"
@@ -233,6 +239,8 @@ create table Product (
    UnitPrice            decimal(12,2)        null default 0,
    Package              nvarchar(30)         null,
    IsDiscontinued       bit                  not null default 0,
+   LastUpdate           datetime         null,
+   UserName             nvarchar(30)         null,
    constraint PK_PRODUCT primary key (Id)
 )
 go
